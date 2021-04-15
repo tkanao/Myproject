@@ -10,4 +10,9 @@ class EventsController extends Controller
     {
         return view('admin.events.create');
     }
+
+    public function home()
+    {
+        return view('admin.events.home');
+    }
 }

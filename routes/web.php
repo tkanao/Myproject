@@ -14,10 +14,12 @@ use App\Http\Controllers\EventsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [EventsController::class, 'home'])->middleware('auth');
 
 Route::prefix('admin')->group(function () {
-    Route::get('/events/create', [EventsController::class, 'add']);
+    Route::get('/events/create', [EventsController::class, 'add'])->middleware('auth');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
